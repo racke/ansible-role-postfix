@@ -5,3 +5,7 @@
 postfix_install:
   - postfix
   - cyrus-sasl
+
+postfix_conf_path: '/usr/local/etc/postfix'
+
+root_group: wheel
