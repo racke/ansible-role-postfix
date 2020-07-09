@@ -28,17 +28,16 @@
     value: "{{ item.value }}"
     vtype: "{{ item.vtype }}"
   with_items: "{{ postfix_debconf_selections }}"
+  when: ansible_os_family == 'Debian'
   tags:
     - configuration
     - postfix
     - postfix-install
 
 - name: install package
-  apt:
+  package:
     name: "{{ postfix_install }}"
-    state: "{{ apt_install_state | default('latest') }}"
-    update_cache: true
-    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+    state: present
   tags:
     - configuration
     - postfix
