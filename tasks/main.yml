@@ -1,5 +1,18 @@
 # tasks file
 ---
+# Copyright (C) 2020 Stefan Hornburg (Racke) <racke@linuxia.de>
+# SPDX-License-Identifier: Artistic-2.0
+
+- name: Include variables depending on OS details
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_os_family }}.yml'
+        - 'defaults.yml'
+      paths:
+        - 'vars'
+
 - name: facts | set
   set_fact:
     is_docker_guest: "{{ ansible_virtualization_role | default('host') == 'guest' and ansible_virtualization_type | default('none') == 'docker' }}"
