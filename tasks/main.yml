@@ -45,10 +45,10 @@
 
 - name: configure mailname
   template:
-    src: "{{ postfix_mailname_file.lstrip('/') }}.j2"
+    src: "mailname.j2"
     dest: "{{ postfix_mailname_file }}"
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
   notify: restart postfix
   tags:
@@ -58,10 +58,10 @@
 
 - name: update configuration file
   template:
-    src: "{{ postfix_main_cf.lstrip('/') }}.j2"
+    src: "main.cf.j2"
     dest: "{{ postfix_main_cf }}"
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
   notify: restart postfix
   tags:
@@ -71,10 +71,10 @@
 
 - name: configure sasl username/password
   template:
-    src: "{{ postfix_sasl_passwd_file.lstrip('/') }}.j2"
+    src: "sasl_passwd.j2"
     dest: "{{ postfix_sasl_passwd_file }}"
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0600
   when:
     - postfix_relayhost | length
@@ -90,10 +90,10 @@
 
 - name: configure aliases
   template:
-    src: "{{ postfix_aliases_file.lstrip('/') }}.j2"
+    src: "aliases.j2"
     dest: "{{ postfix_aliases_file }}"
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
   notify:
     - new aliases
@@ -123,7 +123,7 @@
     regexp: '^{{ item.virtual | regex_escape }}\s.*'
     line: '{{ item.virtual }} {{ item.alias }}'
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
     create: true
     state: present
@@ -142,7 +142,7 @@
     regexp: '^{{ item.sender | regex_escape }}\s.*'
     line: '{{ item.sender }} {{ item.rewrite }}'
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
     create: true
     state: present
@@ -161,7 +161,7 @@
     regexp: '^{{ item.recipient | regex_escape }}\s.*'
     line: '{{ item.recipient }} {{ item.rewrite }}'
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
     create: true
     state: present
@@ -180,7 +180,7 @@
     regexp: '^{{ item.pattern | regex_escape }}\s.*'
     line: '{{ item.pattern }} {{ item.result }}'
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
     create: true
     state: present
@@ -200,7 +200,7 @@
     line: '{{ item.pattern }} {{ item.result }}'
     owner: root
     group: root
-    mode: 0644
+    mode: "{{ root_group }}"
     create: true
     state: present
   with_items: "{{ postfix_sender_dependent_relayhost_maps }}"
@@ -218,7 +218,7 @@
     regexp: '^{{ item.pattern | regex_escape }}\s.*'
     line: '{{ item.pattern }} {{ item.result }}'
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
     create: true
     state: present
@@ -233,10 +233,10 @@
 
 - name: configure header checks
   template:
-    src: "{{ postfix_header_checks_file.lstrip('/') }}.j2"
+    src: "header_checks.j2"
     dest: "{{ postfix_header_checks_file }}"
     owner: root
-    group: root
+    group: "{{ root_group }}"
     mode: 0644
   notify:
     - restart postfix

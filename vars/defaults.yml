@@ -2,3 +2,5 @@
 # Copyright (C) 2020 Stefan Hornburg (Racke) <racke@linuxia.de>
 # SPDX-License-Identifier: Artistic-2.0
 
+postfix_conf_path: '/etc/postfix'
+
