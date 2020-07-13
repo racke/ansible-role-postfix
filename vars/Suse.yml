@@ -5,3 +5,5 @@
 postfix_install:
   - postfix
   - cyrus-sasl
+
+postfix_conf_path: '/etc/postfix'
