@@ -1,7 +1,7 @@
 ## postfix
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-postfix.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-postfix)
-[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-postfix-blue.svg)](https://galaxy.ansible.com/oefenweb/postfix)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-postfix.svg?branch=master)](https://travis-ci.org/racke/ansible-role-postfix)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-postfix-blue.svg)](https://galaxy.ansible.com/racke/postfix)
 
 Set up a postfix server in Debian-like systems.
 
@@ -239,4 +239,4 @@ Mischa ter Smitten
 
 #### Feedback, bug-reports, requests, ...
 
-Are [welcome](https://github.com/Oefenweb/ansible-postfix/issues)!
+Are [welcome](https://github.com/racke/ansible-role-postfix/issues)!
