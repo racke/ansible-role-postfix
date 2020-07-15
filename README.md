@@ -1,7 +1,7 @@
 ## postfix
 
-[![CI](https://github.com/Oefenweb/ansible-postfix/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-postfix/actions?query=workflow%3ACI)
-[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-postfix-blue.svg)](https://galaxy.ansible.com/oefenweb/postfix)
+[![CI](https://github.com/racke/ansible-role-postfix/workflows/CI/badge.svg)](https://github.com/racke/ansible-role-postfix/actions?query=workflow%3ACI)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-postfix-blue.svg)](https://galaxy.ansible.com/racke/postfix)
 
 Set up a postfix server in Debian-like systems.
 
@@ -261,4 +261,4 @@ Mischa ter Smitten
 
 #### Feedback, bug-reports, requests, ...
 
-Are [welcome](https://github.com/Oefenweb/ansible-postfix/issues)!
+Are [welcome](https://github.com/racke/ansible-role-postfix/issues)!
