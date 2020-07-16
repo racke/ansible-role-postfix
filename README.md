@@ -1,15 +1,15 @@
-## postfix
+# postfix
 
 [![CI](https://github.com/racke/ansible-role-postfix/workflows/CI/badge.svg)](https://github.com/racke/ansible-role-postfix/actions?query=workflow%3ACI)
 [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-postfix-blue.svg)](https://galaxy.ansible.com/racke/postfix)
 
 Set up a postfix server in Debian-like systems.
 
-#### Requirements
+## Requirements
 
 None
 
-#### Variables
+## Variables
 
  * `postfix_install` [default: `[postfix, mailutils, libsasl2-2, sasl2-bin, libsasl2-modules]`]: Packages to install
  * `postfix_hostname` [default: `{{ ansible_fqdn }}`]: Host name, used for `myhostname` and in `mydestination`
@@ -75,7 +75,7 @@ None
 * `debconf`
 * `debconf-utils`
 
-#### Example(s)
+## Example(s)
 
 A simple example that doesn't use SASL relaying:
 
@@ -251,11 +251,11 @@ A simple example that shows how to add some raw config:
         policyd-spf_time_limit = 3600
 ```
 
-#### License
+## License
 
 MIT
 
-#### Author Information
+## Author Information
 
 Mischa ter Smitten
 
