@@ -10,6 +10,13 @@ myorigin = {{ postfix_mailname_file }}
 smtpd_banner = {{ postfix_smtpd_banner }}
 biff = no
 
+# Suse specific: Local directories
+{% if ansible_os_family == 'Suse' %}
+command_directory = /usr/sbin
+daemon_directory = /usr/lib/postfix/bin
+setgid_group = maildrop
+{% endif %}
+
 # appending .domain is the MUA's job.
 append_dot_mydomain = no
 
