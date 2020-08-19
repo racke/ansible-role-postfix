@@ -103,6 +103,20 @@ A simple example that rewrites the sender address:
         rewrite: postmaster@yourdomain.org
 ```
 
+Rewrite all recipient addresses (e.g. on a development machine):
+
+```yaml
+---
+- hosts: all
+  roles:
+    - postfix
+  vars:
+    postfix_recipient_canonical_maps_database_type: regexp
+    postfix_recipient_canonical_maps:
+      - recipient: '/^.*$/'
+        rewrite: developer@yourdomain.org
+```
+
 Provide the relay host name if you want to enable relaying:
 
 ```yaml
