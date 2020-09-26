@@ -9,6 +9,7 @@ postfix_install:
 
 postfix_hostname: "{{ ansible_fqdn }}"
 postfix_mailname: "{{ ansible_fqdn }}"
+postfix_domain: ""
 
 postfix_default_database_type: hash
 postfix_compatibility_level: 2
