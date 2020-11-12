@@ -198,8 +198,8 @@
     regexp: '^{{ item.pattern | regex_escape }}.*'
     line: '{{ item.pattern }} {{ item.result }}'
     owner: root
-    group: root
-    mode: "{{ root_group }}"
+    group: "{{ root_group }}"
+    mode: 0644
     create: true
     state: present
   with_items: "{{ postfix_sender_dependent_relayhost_maps }}"
