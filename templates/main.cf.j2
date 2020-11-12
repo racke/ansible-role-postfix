@@ -49,8 +49,15 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 {% endif %}
 myhostname = {{ postfix_hostname }}
 default_database_type = {{ postfix_default_database_type }}
+{% if postfix_alias_maps | count %}
+alias_maps = {% for alias in postfix_alias_maps %}{{ alias.type | default(postfix_default_database_type) }}:{{ alias.file }},{% endfor %}
+
+alias_database = {% for alias in postfix_alias_maps %}{{ alias.type | default(postfix_default_database_type) }}:{{ alias.file }},{% endfor %}
+
+{% else %}
 alias_maps = {{ postfix_default_database_type }}:{{ postfix_aliases_file }}
 alias_database = {{ postfix_default_database_type }}:{{ postfix_aliases_file }}
+{% endif %}
 {% if postfix_virtual_aliases %}
 virtual_alias_maps = {{ postfix_default_database_type }}:{{ postfix_virtual_aliases_file }}
 {% endif %}
