@@ -117,16 +117,15 @@
     - postfix-aliases
 
 - name: configure virtual aliases
-  lineinfile:
+  copy:
     dest: "{{ postfix_virtual_aliases_file }}"
-    regexp: '^{{ item.virtual | regex_escape }}.*'
-    line: '{{ item.virtual }} {{ item.alias }}'
+    content: |
+      {% for item in postfix_virtual_aliases %}
+      {{ item.virtual }} {{ item.alias }}
+      {% endfor %}
     owner: root
     group: "{{ root_group }}"
     mode: 0644
-    create: true
-    state: present
-  with_items: "{{ postfix_virtual_aliases }}"
   notify:
     - new virtual aliases
     - restart postfix
@@ -136,16 +135,15 @@
     - postfix-virtual-aliases
 
 - name: configure sender canonical maps
-  lineinfile:
+  copy:
     dest: "{{ postfix_sender_canonical_maps_file }}"
-    regexp: '^{{ item.sender | regex_escape }}.*'
-    line: '{{ item.sender }} {{ item.rewrite }}'
+    content: |
+      {% for item in postfix_sender_canonical_maps %}
+      {{ item.sender }} {{ item.rewrite }}
+      {% endfor %}
     owner: root
     group: "{{ root_group }}"
     mode: 0644
-    create: true
-    state: present
-  with_items: "{{ postfix_sender_canonical_maps }}"
   notify:
     - postmap sender_canonical_maps
     - restart postfix
@@ -155,16 +153,15 @@
     - postfix-sender-canonical-maps
 
 - name: configure recipient canonical maps
-  lineinfile:
+  copy:
     dest: "{{ postfix_recipient_canonical_maps_file }}"
-    regexp: '^{{ item.recipient | regex_escape }}.*'
-    line: '{{ item.recipient }} {{ item.rewrite }}'
+    content: |
+      {% for item in postfix_recipient_canonical_maps %}
+      {{ item.recipient }} {{ item.rewrite }}
+      {% endfor %}
     owner: root
     group: "{{ root_group }}"
     mode: 0644
-    create: true
-    state: present
-  with_items: "{{ postfix_recipient_canonical_maps }}"
   notify:
     - postmap recipient_canonical_maps
     - restart postfix
@@ -174,16 +171,15 @@
     - postfix-recipient-canonical-maps
 
 - name: configure transport maps
-  lineinfile:
+  copy:
     dest: "{{ postfix_transport_maps_file }}"
-    regexp: '^{{ item.pattern | regex_escape }}.*'
-    line: '{{ item.pattern }} {{ item.result }}'
+    content: |
+      {% for item in postfix_transport_maps %}
+      {{ item.pattern }} {{ item.result }}
+      {% endfor %}
     owner: root
     group: "{{ root_group }}"
     mode: 0644
-    create: true
-    state: present
-  with_items: "{{ postfix_transport_maps }}"
   notify:
     - postmap transport_maps
     - restart postfix
@@ -193,16 +189,15 @@
     - postfix-transport-maps
 
 - name: configure sender dependent relayhost maps
-  lineinfile:
+  copy:
     dest: "{{ postfix_sender_dependent_relayhost_maps_file }}"
-    regexp: '^{{ item.pattern | regex_escape }}.*'
-    line: '{{ item.pattern }} {{ item.result }}'
+    content: |
+      {% for item in postfix_sender_dependent_relayhost_maps %}
+      {{ item.pattern }} {{ item.result }}
+      {% endfor %}
     owner: root
     group: "{{ root_group }}"
     mode: 0644
-    create: true
-    state: present
-  with_items: "{{ postfix_sender_dependent_relayhost_maps }}"
   notify:
     - postmap sender_dependent_relayhost_maps
     - restart postfix
@@ -212,16 +207,15 @@
     - postfix-sender-dependent-relayhost-maps
 
 - name: configure generic table
-  lineinfile:
+  copy:
     dest: "{{ postfix_generic_file }}"
-    regexp: '^{{ item.pattern | regex_escape }}.*'
-    line: '{{ item.pattern }} {{ item.result }}'
+    content: |
+      {% for item in postfix_generic %}
+      {{ item.pattern }} {{ item.result }}
+      {% endfor %}
     owner: root
     group: "{{ root_group }}"
     mode: 0644
-    create: true
-    state: present
-  with_items: "{{ postfix_generic }}"
   notify:
     - postmap generic
     - restart postfix
