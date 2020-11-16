@@ -55,13 +55,24 @@
     - postfix
     - postfix-mailname
 
-- name: update configuration file
+- name: update main configuration file
   template:
     src: "main.cf.j2"
     dest: "{{ postfix_main_cf }}"
     owner: root
     group: "{{ root_group }}"
     mode: 0644
+  notify: restart postfix
+  tags:
+    - configuration
+    - postfix
+    - postfix-configuration
+
+- name: update master configuration file
+  blockinfile:
+    path: "{{ postfix_master_cf }}"
+    block: "{{ postfix_master_config_block | default(omit) }}"
+    marker: "# {mark} Custom configuration"
   notify: restart postfix
   tags:
     - configuration

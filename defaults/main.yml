@@ -55,6 +55,7 @@ root_group: root
 # postfix_conf_path: /etc/postfix
 
 postfix_main_cf: "{{ postfix_conf_path }}/main.cf"
+postfix_master_cf: "{{ postfix_conf_path }}/master.cf"
 postfix_mailname_file: /etc/mailname
 postfix_alias_maps: []
 postfix_aliases_file: /etc/aliases
