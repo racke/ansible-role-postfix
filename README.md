@@ -253,6 +253,7 @@ MIT
 
 ## Author Information
 
+Stefan Hornburg (Racke)
 Mischa ter Smitten
 
 #### Feedback, bug-reports, requests, ...
