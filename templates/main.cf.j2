@@ -125,6 +125,9 @@ smtpd_relay_restrictions = {{ postfix_smtpd_relay_restrictions | join(', ') }}
 {% if postfix_smtpd_client_restrictions is defined %}
 smtpd_client_restrictions = {{ postfix_smtpd_client_restrictions | join(', ') }}
 {% endif %}
+{% if postfix_smtpd_recipient_restrictions is defined %}
+smtpd_recipient_restrictions = {{ postfix_smtpd_recipient_restrictions | join(', ') }}
+{% endif %}
 
 message_size_limit = {{  postfix_message_size_limit }}
 
