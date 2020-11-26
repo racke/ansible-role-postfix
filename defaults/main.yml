@@ -22,6 +22,7 @@ postfix_relayhost: ''
 postfix_relayhost_mxlookup: false
 postfix_relayhost_port: 587
 postfix_relaytls: false
+postfix_relay_domains: []
 postfix_sasl_auth_enable: true
 postfix_sasl_user: "postmaster@{{ ansible_domain }}"
 postfix_sasl_password: 'k8+haga4@#pR'

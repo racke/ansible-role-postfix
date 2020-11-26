@@ -32,6 +32,7 @@ None
  * `postfix_relayhost` [default: `''` (no relay host)]: Hostname to relay all email to
  * `postfix_relayhost_mxlookup` [default: `false` (not using mx lookup)]: Lookup for MX record instead of A record for relayhost
  * `postfix_relayhost_port` [default: 587]: Relay port (on `postfix_relayhost`, if set)
+ * `postfix_relay_domains`: [optional] : Destination domains for relaying ([see](http://www.postfix.org/postconf.5.html#relay_domains))
  * `postfix_smtpd_client_restrictions` [optional]: List of client restrictions ([see](http://www.postfix.org/postconf.5.html#smtpd_client_restrictions))
  * `postfix_smtpd_recipient_restrictions` [optional]: List of recipient restrictions ([see](http://www.postfix.org/postconf.5.html#smtpd_recipient_restrictions))
  * `postfix_smtpd_relay_restrictions` [optional]: List of access restrictions for mail relay control ([see](http://www.postfix.org/postconf.5.html#smtpd_relay_restrictions))
