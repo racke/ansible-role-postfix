@@ -11,6 +11,9 @@
         - 'defaults.yml'
       paths:
         - 'vars'
+  tags:
+    - os-variables
+    - postfix
 
 - name: facts | set
   set_fact:
