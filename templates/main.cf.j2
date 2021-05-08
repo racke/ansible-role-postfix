@@ -34,15 +34,22 @@ readme_directory = no
 compatibility_level = {{ postfix_compatibility_level }}
 
 # TLS parameters
+tls_high_cipherlist={{ postfix_tls_high_cipherlist }}
+
 smtpd_tls_cert_file={{ postfix_smtpd_tls_cert_file }}
-smtpd_tls_key_file={{ postfix_smtpd_tls_key_file }}
+smtpd_tls_key_file={{ postfix_smtpd_tls_key_file }}
+
 smtpd_use_tls=yes
+smtpd_tls_ciphers={{ postfix_smtpd_tls_ciphers }}
+
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 {% if postfix_smtpd_tls_loglevel is defined %}
 smtpd_tls_loglevel = {{ postfix_smtpd_tls_loglevel }}
 {% endif %}
 
 smtp_use_tls=yes
+smtp_tls_ciphers={{ postfix_smtpd_tls_ciphers }}
+
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 {% if postfix_smtp_tls_loglevel is defined %}
 smtp_tls_loglevel = {{ postfix_smtp_tls_loglevel }}
