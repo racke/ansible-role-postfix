@@ -1,0 +1,27 @@
+---
+# Copyright (C) 2021 Stefan Hornburg (Racke) <racke@linuxia.de>
+# SPDX-License-Identifier: Artistic-2.0
+
+- name: Install TLS key
+  copy:
+    src: "{{ postfix_smtpd_tls_key_contents }}"
+    dest: "{{ postfix_smtpd_tls_key_file }}"
+    owner: root
+    group: root
+    mode: '0640'
+  notify: restart service
+  tags:
+    - postfix
+    - postfix-tls
+  
+- name: Install TLS certificate
+  copy:
+    src: "{{ postfix_smtpd_tls_cert_contents }}"
+    dest: "{{ postfix_smtpd_tls_cert_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart postfix
+  tags:
+    - postfix
+    - postfix-tls
