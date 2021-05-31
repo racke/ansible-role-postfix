@@ -36,10 +36,14 @@ compatibility_level = {{ postfix_compatibility_level }}
 # TLS parameters
 tls_high_cipherlist={{ postfix_tls_high_cipherlist }}
 
-smtpd_tls_cert_file={% if postfix_smtpd_tls_cert_file is abs %}{{ postfix_smtpd_tls_cert_file }}{% else %}{{ postfix_smtpd_tls_cert_dir + '/' + postfix_smtpd_tls_cert_file }}
+smtpd_tls_cert_file={% if postfix_smtpd_tls_cert_file is abs %}
+{{ postfix_smtpd_tls_cert_file }}{% else %}{{ postfix_smtpd_tls_cert_dir + '/' + postfix_smtpd_tls_cert_file }}
 {% endif %}
-smtpd_tls_key_file={% if postfix_smtpd_tls_key_file is abs %}{{ postfix_smtpd_tls_key_file }}{% else %}{{ postfix_smtpd_tls_key_dir + '/' + postfix_smtpd_tls_key_file }}
+
+smtpd_tls_key_file={% if postfix_smtpd_tls_key_file is abs %}
+{{ postfix_smtpd_tls_key_file }}{% else %}{{ postfix_smtpd_tls_key_dir + '/' + postfix_smtpd_tls_key_file }}
 {% endif %}
+
 
 smtpd_use_tls=yes
 smtpd_tls_ciphers={{ postfix_smtpd_tls_ciphers }}
