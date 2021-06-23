@@ -46,6 +46,14 @@ postfix_message_size_limit: 10240000
 postfix_header_checks_database_type: regexp
 postfix_default_database_type: hash
 postfix_tls_high_cipherlist: '!aNULL:!eNULL:!CAMELLIA:HIGH:@STRENGTH'
+postfix_tls_preempt_cipherlist: yes
+postfix_tls_ssl_options: '0x40000000'
+postfix_smtpd_tls_mandatory_protocols: '!SSLv2,!SSLv3,!TLSv1,!TLSv1.1'
+postfix_smtpd_tls_protocols: '!SSLv2,!SSLv3,!TLSv1,!TLSv1.1'
+postfix_smtpd_tls_mandatory_ciphers: high
+postfix_smtpd_tls_exclude_ciphers: eNULL, aNULL, LOW, EXP, MEDIUM, ADH, AECDH, MD5,
+                            DSS, ECDSA, CAMELLIA128, 3DES, CAMELLIA256,
+                            RSA+AES, SHA1, SHA256, SHA384
 postfix_smtpd_tls_ciphers: high
 postfix_smtp_tls_ciphers: high
 postfix_smtpd_tls_cert_file: /etc/ssl/certs/ssl-cert-snakeoil.pem

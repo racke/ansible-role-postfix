@@ -35,6 +35,13 @@ compatibility_level = {{ postfix_compatibility_level }}
 
 # TLS parameters
 tls_high_cipherlist={{ postfix_tls_high_cipherlist }}
+tls_preempt_cipherlist = {{ postfix_tls_preempt_cipherlist | bool | ternary('yes', 'no') }}
+tls_ssl_options = {{ postfix_tls_ssl_options }}
+
+smtpd_tls_mandatory_protocols = {{ postfix_smtpd_tls_mandatory_protocols }}
+smtpd_tls_protocols = {{ postfix_smtpd_tls_protocols }}
+smtpd_tls_mandatory_cipher = {{ postfix_smtpd_tls_mandatory_ciphers }}
+smtpd_tls_exclude_ciphers = {{ postfix_smtpd_tls_exclude_ciphers }}
 
 smtpd_tls_cert_file={% if postfix_smtpd_tls_cert_file is abs %}
 {{ postfix_smtpd_tls_cert_file }}{% else %}{{ postfix_smtpd_tls_cert_dir + '/' + postfix_smtpd_tls_cert_file }}
