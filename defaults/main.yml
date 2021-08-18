@@ -72,6 +72,7 @@ postfix_mailname_file: /etc/mailname
 postfix_alias_maps: []
 postfix_aliases_file: /etc/aliases
 postfix_virtual_aliases_file: "{{ postfix_conf_path }}/virtual"
+postfix_virtual_mailbox_domains: []
 postfix_sasl_passwd_file: "{{ postfix_conf_path }}/sasl_passwd"
 postfix_sender_canonical_maps_file: "{{ postfix_conf_path }}/sender_canonical_maps"
 postfix_recipient_canonical_maps_file: "{{ postfix_conf_path }}/recipient_canonical_maps"

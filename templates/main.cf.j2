@@ -87,6 +87,9 @@ alias_database = {{ postfix_default_database_type }}:{{ postfix_aliases_file }}
 {% if postfix_virtual_aliases %}
 virtual_alias_maps = {{ postfix_default_database_type }}:{{ postfix_virtual_aliases_file }}
 {% endif %}
+{% if postfix_virtual_mailbox_domains | count %}
+virtual_mailbox_domains = {{ postfix_virtual_mailbox_domains | join(' ') }}
+{% endif %}
 {% if postfix_sender_canonical_maps %}
 sender_canonical_maps = {{ postfix_default_database_type }}:{{ postfix_sender_canonical_maps_file }}
 {% endif %}
