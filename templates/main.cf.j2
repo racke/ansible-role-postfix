@@ -6,9 +6,9 @@
 # Debian specific:  Specifying a file name will cause the first
 # line of that file to be used as the name.  The Debian default
 # is /etc/mailname.
-myorigin = {{ postfix_mailname_file }}
+#myorigin = {{ postfix_mailname_file }}
 {% else %}
-myorigin = {{ postfix_mailname }}
+#myorigin = {{ postfix_mailname }}
 {% endif %}
 
 smtpd_banner = {{ postfix_smtpd_banner }}
@@ -110,6 +110,11 @@ smtp_generic_maps = {{ postfix_default_database_type }}:{{ postfix_generic_file 
 {% endif %}
 {% if postfix_header_checks %}
 smtp_header_checks = {{ postfix_header_checks_database_type }}:{{ postfix_header_checks_file }}
+{% endif %}
+{% if ansible_os_family == 'Debian' %}
+myorigin = {{ postfix_mailname_file }}
+{% else %}
+myorigin = {{ postfix_mailname }}
 {% endif %}
 mydestination = {{ postfix_mydestination | join(', ') }}
 mynetworks = {{ postfix_mynetworks | join(' ') }}
