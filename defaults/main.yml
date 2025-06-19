@@ -9,7 +9,7 @@ postfix_install:
 postfix_hostname: "{{ ansible_fqdn }}"
 postfix_mailname: "{{ ansible_fqdn }}"
 postfix_domain: ""
-postfix_compatibility_level: 2
+postfix_compatibility_level: 3.6
 postfix_aliases: []
 postfix_virtual_aliases: []
 postfix_sender_canonical_maps: []
