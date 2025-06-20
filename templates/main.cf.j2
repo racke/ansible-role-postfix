@@ -51,8 +51,7 @@ smtpd_tls_key_file={% if postfix_smtpd_tls_key_file is abs %}
 {{ postfix_smtpd_tls_key_file }}{% else %}{{ postfix_smtpd_tls_key_dir + '/' + postfix_smtpd_tls_key_file }}
 {% endif %}
 
-
-smtpd_use_tls=yes
+smtpd_tls_security_level=may
 smtpd_tls_ciphers={{ postfix_smtpd_tls_ciphers }}
 
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
@@ -60,7 +59,7 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtpd_tls_loglevel = {{ postfix_smtpd_tls_loglevel }}
 {% endif %}
 
-smtp_use_tls=yes
+smtp_tls_security_level=may
 smtp_tls_ciphers={{ postfix_smtpd_tls_ciphers }}
 
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
