@@ -2,6 +2,7 @@
 
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 
+
 {% if ansible_os_family == 'Debian' %}
 # Debian specific:  Specifying a file name will cause the first
 # line of that file to be used as the name.  The Debian default
@@ -13,9 +14,9 @@
 
 smtpd_banner = {{ postfix_smtpd_banner }}
 biff = no
+{% if ansible_os_family == 'Suse' %}
 
 # Suse specific: Local directories
-{% if ansible_os_family == 'Suse' %}
 command_directory = /usr/sbin
 daemon_directory = /usr/lib/postfix/bin
 setgid_group = maildrop
