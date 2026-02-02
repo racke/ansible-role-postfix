@@ -41,7 +41,6 @@ tls_ssl_options = {{ postfix_tls_ssl_options }}
 
 smtpd_tls_mandatory_protocols = {{ postfix_smtpd_tls_mandatory_protocols }}
 smtpd_tls_protocols = {{ postfix_smtpd_tls_protocols }}
-smtpd_tls_mandatory_cipher = {{ postfix_smtpd_tls_mandatory_ciphers }}
 smtpd_tls_exclude_ciphers = {{ postfix_smtpd_tls_exclude_ciphers }}
 
 smtpd_tls_cert_file={% if postfix_smtpd_tls_cert_file is abs %}
