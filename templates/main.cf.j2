@@ -133,7 +133,7 @@ smtp_tls_CAfile = {{ postfix_smtp_tls_cafile }}
 {% else %}
 relayhost =
 {% endif %}
-mynetworks = {{ postfix_mynetworks | join(' ') }}
+mynetworks = {{ (postfix_mynetworks + postfix_extra_mynetworks ) | join(' ') }}
 mailbox_size_limit = 0
 recipient_delimiter = +
 {% if postfix_inet_interfaces is string %}
