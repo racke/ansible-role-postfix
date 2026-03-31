@@ -1,0 +1,33 @@
+---
+# Copyright (C) 2020 Stefan Hornburg (Racke) <racke@linuxia.de>
+# SPDX-License-Identifier: Artistic-2.0
+
+- name: update main configuration file (postmulti)
+  template:
+    src: "postmulti-main.cf.j2"
+    dest: "/etc/{{ item.name }}/main.cf"
+    owner: root
+    group: "{{ root_group }}"
+    mode: 0644
+  loop: "{{ postfix_multi }}"
+  notify: restart postfix
+  tags:
+    - configuration
+    - postfix
+    - postfix-configuration
+    - postfix-postmulti
+
+- name: update master configuration file (postmulti)
+  template:
+    src: "postmulti-master.cf.j2"
+    dest: "/etc/{{ item.name }}/master.cf"
+    owner: root
+    group: "{{ root_group }}"
+    mode: 0644
+  loop: "{{ postfix_multi }}"
+  notify: restart postfix
+  tags:
+    - configuration
+    - postfix
+    - postfix-configuration
+    - postfix-postmulti

@@ -252,6 +252,12 @@
     - postfix
     - postfix-header-checks-table
 
+- name: configure Postmulti
+  import_tasks: postmulti.yml
+  tags:
+    - configuration
+    - postfix
+
 - name: start and enable service
   service:
     name: postfix
